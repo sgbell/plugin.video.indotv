@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<addon id="plugin.video.indotv" name="Indonesian TV" provider-name="Mimpi Development" version="0.1.0">
+   <requires>
+      <import addon="xbmc.python" version="2.1.0" />
+      <import addon="script.module.aussieaddonscommon"/>
+      <import addon="script.common.plugin.cache"/>
+   </requires>
+   <extension library="default.py" point="xbmc.python.pluginsource" provides="video">
+      <provides>video</provides>
+   </extension>
+   <extension library="default.py" point="xbmc.addon.metadata">
+      <assets>
+         <icon>icon.png</icon>
+      </assets>
+      <summary>Mivo - Indonesian TV Streamer</summary>
+      <description>Mivo is a website that offers quite a number of Indonesian tv streaming channels to watch.</description>
+      <website>http://mimpidev.com/</website>
+      <provides>video</provides>
+      <platform>all</platform>
+      <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
+   </extension>
+</addon>
