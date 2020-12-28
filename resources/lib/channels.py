@@ -6,6 +6,7 @@ import urllib
 from channel import Channel
 
 from aussieaddonscommon import utils
+from future.moves.urllib.parse import quote_plus
 
 def make_channel_list():
     try:
@@ -13,9 +14,9 @@ def make_channel_list():
 
         ok = True
         for c in channels:
-            listitem = xbmcgui.ListItem(label=c.get_name(),
-                                        iconImage=c.get_thumbnail_url(),
-                                        thumbnailImage=c.get_thumbnail_url())
+            listitem = xbmcgui.ListItem(label=c.get_name())
+            listitem.setArt({'icon':c.get_thumbnail_url(),
+                            'thumb':c.get_thumbnail_url()})
             listitem.setInfo('video', c.get_kodi_list_item())
             listitem.setProperty('IsPlayable', 'true')
  
@@ -41,11 +42,12 @@ def play(url):
         channel.parse_kodi_url(url)
 
         stream = channel.get_url()
-        stream_url = '{}{}|User-Agent={}&Cookie={}'.format(stream,authToken['wms_auth'],urllib.quote(authToken['User-Agent']),urllib.quote(authToken['cookies']))
+        stream_url = '{}{}|User-Agent={}&Cookie={}'.format(stream,authToken['wms_auth'],quote_plus(authToken['User-Agent']),quote_plus(authToken['cookies']))
         listitem = xbmcgui.ListItem(label=channel.get_name(),
-                                    iconImage=channel.get_thumbnail_url(),
-                                    thumbnailImage=channel.get_thumbnail_url(),
                                     path=stream_url)
+        listitem.setArt({"icon":channel.get_thumbnail_url(),
+                         "thumb":channel.get_thumbnail_url()})
+                         
         listitem.setInfo('video', channel.get_kodi_list_item())
         if hasattr(listitem, 'addStreamInfo'):
             listitem.addStreamInfo('audio', channel.get_kodi_audio_stream_info())

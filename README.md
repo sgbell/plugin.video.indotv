@@ -8,7 +8,7 @@ Indonesian TV addon for Kodi, using external libraries from Aussie Addon
   c) Look at the network responses after you have logged in to your google account, and look at the response for:
      https://api.mivo.com/v2/web/oauth/google (the current url in your url bar)
   d) For each of the values in var oauth_pairs, you need to copy and paste those values into the file: resources/lib/comm.py From line 11-24
-  e) From the look of it, the auth token expires in 12 months, so rinse and repeat in 12 months time.
+  e) Mivo TV doesn't seem to care that the auth token expired after 12 months... still working strong.
 
 2. For this plugin to work, it requires the following plugins installed in Kodi:
    AussieAddonsCommon - https://github.com/aussieaddons/script.module.aussieaddonscommon
